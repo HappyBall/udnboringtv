@@ -1,0 +1,16 @@
+body{
+	padding-top: 100px;
+}
+
+.d3-tip{
+	padding: 12px;
+	background: #fff;
+	z-index: 100;
+	border: 2px solid black;
+}
+
+.clock-block{
+	float: left;
+	margin-left: 30px;
+}
+
