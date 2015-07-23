@@ -1,5 +1,46 @@
 body{
-	padding-top: 100px;
+	/*padding-top: 100px;*/
+}
+
+.sections{
+	margin-top: 100px;
+}
+
+#first-page-container{
+	width: 75%;
+	display: table;
+	margin: -40px auto 0px;
+}
+
+.big-title{
+	font-size: 40px;
+}
+
+.sec1-block{
+	display: table;
+}
+
+.sec1-legend-block{
+	margin-left: 45px;
+	margin-top: 30px;
+}
+
+.sec1-legend{
+	display: table;
+	float: left;
+}
+
+.sec1-legend-color{
+	height: 5px;
+}
+
+.sec1-legend-nations{
+	font-size: 30px;
+	line-height: 37px;
+	color: #727171;
+	border-left: 1px solid black;
+	margin-top: 10px;
+	padding-left: 10px;
 }
 
 .d3-tip{
@@ -32,12 +73,45 @@ body{
 
 .dramas-rate-percent{
 	float: left;
+	margin-left: 6%;
 }
 
 .rate-bar{
 	float: left;
 	height: 20px;
 	border: 1px solid white;
+}
+
+.sec3-legend-block{
+	display: table;
+	padding-left: 13px;
+	width: 100%;
+}
+
+.sec3-legend{
+	float: left;
+	height: 20px;
+	width: 6.7%;
+	border: 1px solid white;
+}
+
+#foreign-drama-legend{
+	background-color: #E83828;
+	margin-left: 10%;
+}
+
+#local-drama-legend{
+	background-color: #C9CACA;
+	margin-left: 7.8%;
+}
+
+.sec3-legend-text{
+	float: left;
+	margin-left: 15px;
+}
+
+#foreign-rate{
+	float: right;
 }
 
 .white-tooltip + .tooltip > .tooltip-inner {
@@ -56,4 +130,32 @@ body{
 
 .tooltip-inner{
 	font-size: 16px;
+}
+
+.myfont{
+	font-family: 微軟正黑體;
+}
+
+.bold-font{
+	font-weight: bold;
+}
+
+.tw-color{
+	background-color: #35A6EC;
+}
+
+.cn-color{
+	background-color: #8CC63E;
+}
+
+.tw-foreign-color{
+	background-color: #D81B5E;
+}
+
+.kr-color{
+	background-color: #F38713;
+}
+
+.jp-color{
+	background-color: #65C7D0;
 }

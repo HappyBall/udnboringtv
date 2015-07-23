@@ -201,7 +201,7 @@ $(document).ready(function(){
 			var rate_block = d3.select('#dramas-rate-container').append('div').attr('class', 'dramas-rate-block');
 			rate_block.append('div').attr('class', 'dramas-rate-channel').html(channelListSortByDramasNum[i][0]);
 			var rate_bars = rate_block.append('div').attr('class', 'dramas-rate-bars');
-			rate_block.append('div').attr('class', 'dramas-rate-percent');
+			rate_block.append('div').attr('class', 'dramas-rate-percent').html(Math.round((channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'].length/channelListSortByDramasNum[i][1])*100) + '%');
 
 			for (var j = 0; j < channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'].length; j++){
 				rate_bars.append('div').attr({
