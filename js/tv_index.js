@@ -8,12 +8,15 @@ var regionColorList = ['#35A6EC', '#8CC63E', '#D81B5E', '#F38713', '#65C7D0'];
 var channelHoursList = [];
 var count_hours = 0, count_change_image = 0;
 var clockChangeList = [];
+var channel_dramas_dict = {};
+var channelListSortByDramasNum = [];
+var dramasMaxNum = 12;
 
 //---------------------------------------------------------------------------------------------------------------------
 
 $(document).ready(function(){
 	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
-		console.log(data_drama_money);
+		// console.log(data_drama_money);
 
 		var w = 1100, h = 600, padding = 30, barMargin = 2;
 
@@ -55,7 +58,7 @@ $(document).ready(function(){
 	});
 
 	d3.csv('data/comedy_money_mod.csv', function(data_comedy_money){
-		console.log(data_comedy_money);
+		// console.log(data_comedy_money);
 
 		var w = 1100, h = 600, padding = 30, barMargin = 2;
 
@@ -114,7 +117,7 @@ $(document).ready(function(){
 			return a < b ? -1 : (a > b ? 1 : 0);
 		});
 
-		console.log(clockChangeList);
+		// console.log(clockChangeList);
 
 		function isElementInViewport (el) {
 
@@ -162,5 +165,68 @@ $(document).ready(function(){
 		}
 	});
 
+	d3.csv('data/channel_dramas.csv', function(data_channel_dramas){
+		// console.log(data_channel_dramas);
+		for (var i in data_channel_dramas){
+			if (data_channel_dramas[i]['channel'] in channel_dramas_dict == false){
+				channel_dramas_dict[data_channel_dramas[i]['channel']] = {};
+				channel_dramas_dict[data_channel_dramas[i]['channel']]['local'] = [];
+				channel_dramas_dict[data_channel_dramas[i]['channel']]['foreign'] = [];
+			}
+
+			if(data_channel_dramas[i]['region'] == '國語' || data_channel_dramas[i]['region'] == '台語' || data_channel_dramas[i]['region'] == '客語')
+				channel_dramas_dict[data_channel_dramas[i]['channel']]['local'].push(data_channel_dramas[i]);
+			else
+				channel_dramas_dict[data_channel_dramas[i]['channel']]['foreign'].push(data_channel_dramas[i]);
+
+			
+		}
+
+		// console.log(channel_dramas_dict);
+
+		for (var i in channel_dramas_dict){
+			channelListSortByDramasNum.push([i, channel_dramas_dict[i]['foreign'].length + channel_dramas_dict[i]['local'].length]);
+		}
+
+		channelListSortByDramasNum.sort(function(a,b){
+			a = a[1];
+			b = b[1];
+
+			return a < b ? 1 : (a > b ? -1 : 0);
+		});
+
+		// console.log(channelListSortByDramasNum);
+
+		for (var i in channelListSortByDramasNum){
+			var rate_block = d3.select('#dramas-rate-container').append('div').attr('class', 'dramas-rate-block');
+			rate_block.append('div').attr('class', 'dramas-rate-channel').html(channelListSortByDramasNum[i][0]);
+			var rate_bars = rate_block.append('div').attr('class', 'dramas-rate-bars');
+			rate_block.append('div').attr('class', 'dramas-rate-percent');
+
+			for (var j = 0; j < channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'].length; j++){
+				rate_bars.append('div').attr({
+					'class': 'rate-bar white-tooltip', 
+					'data-toggle': 'tooltip', 
+					'data-placement': 'top', 
+					'title': channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'][j]['program'] + '-' + channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'][j]['region'],
+					'data-html': 'true'
+				}).style({'width': 100/dramasMaxNum + '%', 'background-color': '#E83828'});
+			}
+
+			for (var j = 0; j < channel_dramas_dict[channelListSortByDramasNum[i][0]]['local'].length; j++){
+				rate_bars.append('div').attr({
+					'class': 'rate-bar white-tooltip', 
+					'data-toggle': 'tooltip', 
+					'data-placement': 'top', 
+					'title': channel_dramas_dict[channelListSortByDramasNum[i][0]]['local'][j]['program'] + '-' + channel_dramas_dict[channelListSortByDramasNum[i][0]]['local'][j]['region'], 
+					'data-html': 'true'
+				}).style({'width': 100/dramasMaxNum + '%', 'background-color': '#C9CACA'});
+			}			
+		}
+
+		
+		$('[data-toggle="tooltip"]').tooltip();
+		
+	});
 	 
 });

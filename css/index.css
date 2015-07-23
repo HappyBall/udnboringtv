@@ -14,3 +14,46 @@ body{
 	margin-left: 30px;
 }
 
+.dramas-rate-block{
+	width: 100%;
+	display: table;
+	margin-top: 10px;
+}
+
+.dramas-rate-channel{
+	float: left;
+	width: 10%;
+}
+
+.dramas-rate-bars{
+	float: left;
+	width: 80%;
+}
+
+.dramas-rate-percent{
+	float: left;
+}
+
+.rate-bar{
+	float: left;
+	height: 20px;
+	border: 1px solid white;
+}
+
+.white-tooltip + .tooltip > .tooltip-inner {
+	background-color: #fff;
+	border: 1px solid black;
+	color: black;
+}
+
+.white-tooltip + .tooltip.top > .tooltip-arrow {
+	border-top-color: #fff;
+}
+
+.tooltip.in{
+	opacity: 1;
+}
+
+.tooltip-inner{
+	font-size: 16px;
+}
