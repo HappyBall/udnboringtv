@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 		var barWidth = (w - padding*2) / data_drama_money.length - barMargin;
 
-		var tip = d3.tip().offset([-50, 0]).attr('class', 'd3-tip').html(function(d) { return d['program'] + '<br>' + d['money'] + '萬元<br>' + d['channel']; });
+		var tip = d3.tip().offset([-30, 0]).attr('class', 'd3-tip').html(function(d) { return d['program'] + '<br>' + d['money'] + '萬元<br>' + d['channel']; });
 
 		var svg = d3.select('#svg-drama-money').append('svg').attr({'width': w, 'height': h});
 
@@ -75,7 +75,7 @@ $(document).ready(function(){
 
 		var barWidth = (w - padding*2) / data_comedy_money.length - barMargin;
 
-		var tip = d3.tip().offset([-50, 0]).attr('class', 'd3-tip').html(function(d) { return d['program'] + '<br>' + d['money'] + '萬元<br>' + d['channel']; });
+		var tip = d3.tip().offset([-30, 0]).attr('class', 'd3-tip').html(function(d) { return d['program'] + '<br>' + d['money'] + '萬元<br>' + d['channel']; });
 
 		var svg = d3.select('#svg-comedy-money').append('svg').attr({'width': w, 'height': h});
 
@@ -197,14 +197,34 @@ $(document).ready(function(){
 		// console.log(channel_dramas_dict);
 
 		for (var i in channel_dramas_dict){
-			channelListSortByDramasNum.push([i, channel_dramas_dict[i]['foreign'].length + channel_dramas_dict[i]['local'].length]);
+			channelListSortByDramasNum.push([i, channel_dramas_dict[i]['foreign'].length + channel_dramas_dict[i]['local'].length, channel_dramas_dict[i]['foreign'].length]);
 		}
 
 		channelListSortByDramasNum.sort(function(a,b){
-			a = a[1];
-			b = b[1];
+			c = a[1];
+			d = b[1];
 
-			return a < b ? 1 : (a > b ? -1 : 0);
+			if(c < d) return 1;
+
+			else if(c > d) return -1;
+
+			else{
+				e = a[2];
+				f = b[2];
+
+				if(e < f) return 1;
+
+				else if(e > f) return -1;
+
+				else return 0;
+			}
+
+			/*return c < d ? 1 : (c > d ? -1 : function(a,b){
+				e = a[2];
+				f = b[2];
+
+				return e < f ? 1: (e > d ? -1 : 0);
+			});*/
 		});
 
 		// console.log(channelListSortByDramasNum);
@@ -221,7 +241,8 @@ $(document).ready(function(){
 					'data-toggle': 'tooltip', 
 					'data-placement': 'top', 
 					'title': channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'][j]['program'] + '-' + channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'][j]['region'],
-					'data-html': 'true'
+					'data-html': 'true',
+					'region': 'foreign'
 				}).style({'width': 100/dramasMaxNum + '%', 'background-color': '#E83828'});
 			}
 
@@ -231,13 +252,27 @@ $(document).ready(function(){
 					'data-toggle': 'tooltip', 
 					'data-placement': 'top', 
 					'title': channel_dramas_dict[channelListSortByDramasNum[i][0]]['local'][j]['program'] + '-' + channel_dramas_dict[channelListSortByDramasNum[i][0]]['local'][j]['region'], 
-					'data-html': 'true'
+					'data-html': 'true',
+					'region': 'local'
 				}).style({'width': 100/dramasMaxNum + '%', 'background-color': '#C9CACA'});
 			}			
 		}
 
 		
 		$('[data-toggle="tooltip"]').tooltip();
+
+		$('.rate-bar')
+		.on('mouseover', function(){
+			$(this).css('background-color', '#F6AFA9');
+		})
+		.on('mouseout',function(){
+			var r = $(this).attr('region');
+
+			if(r == 'local')
+				$(this).css('background-color', '#C9CACA');
+			else
+				$(this).css('background-color', '#E83828');
+		});
 		
 	});
 	 
