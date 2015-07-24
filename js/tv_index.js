@@ -110,7 +110,7 @@ $(document).ready(function(){
 
 		for (var i = 0; i < data_channel_money.length; i++){
 			var clock_block = d3.select('#clocks-container').append('div').attr('class', 'clock-block');
-			clock_block.append('div').attr('class', 'clock-channel').html(data_channel_money[i]['channel']);
+			clock_block.append('div').attr('class', 'clock-channel myfont').html(data_channel_money[i]['channel']);
 			clock_block.append('div').attr({'class': 'clock-image', 'id': 'clock-image-' + i}).append('img').attr('src', 'img/clock.gif');
 			clock_block.append('div').attr('class', 'clock-hours').html(data_channel_money[i]['avg-hours']);
 			channelHoursList.push(parseInt(data_channel_money[i]['avg-hours']));
@@ -231,7 +231,7 @@ $(document).ready(function(){
 
 		for (var i in channelListSortByDramasNum){
 			var rate_block = d3.select('#dramas-rate-container').append('div').attr('class', 'dramas-rate-block');
-			rate_block.append('div').attr('class', 'dramas-rate-channel').html(channelListSortByDramasNum[i][0]);
+			rate_block.append('div').attr('class', 'dramas-rate-channel myfont').html(channelListSortByDramasNum[i][0]);
 			var rate_bars = rate_block.append('div').attr('class', 'dramas-rate-bars');
 			rate_block.append('div').attr('class', 'dramas-rate-percent').html(Math.round((channel_dramas_dict[channelListSortByDramasNum[i][0]]['foreign'].length/channelListSortByDramasNum[i][1])*100) + '%');
 

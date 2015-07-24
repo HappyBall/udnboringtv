@@ -25,6 +25,13 @@ body{
 	font-size: 21px;
 	line-height: 35px;
 	margin-top: 20px;
+	text-align: justify;
+}
+
+.ps{
+	margin-left: 45px;
+	margin-top: 20px;
+	font-size: 18px;
 }
 
 .svg-container{
@@ -46,6 +53,7 @@ body{
 .sec1-legend-block{
 	margin-left: 45px;
 	margin-top: 30px;
+	display: table;
 }
 
 .sec1-legend{
@@ -152,6 +160,10 @@ body{
 	margin-left: 30px;
 }
 
+#clocks-container{
+	margin-top: 50px;
+}
+
 .clock-ps{
 	margin-left: 30px;
 }
@@ -166,7 +178,7 @@ body{
 	display: table;
 	padding-left: 13px;
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 50px;
 }
 
 .sec3-legend{
