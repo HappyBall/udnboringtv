@@ -76,6 +76,37 @@ body{
 	margin-left: 6%;
 }
 
+.clock-avg-block{
+	display: table;
+	width: 30%;
+	float: left;
+	margin-left: 30px;
+	border-left: 1px solid #808080;
+	margin-top: 10px;
+}
+
+.avg-hour-text{
+	line-height: 100px;
+	font-size: 30px;
+	margin-left: 30px;
+}
+
+.avg-clock-image{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.avg-hour-num{
+	line-height: 100px;
+	font-size: 70px;
+	color: #E83828;
+	margin-left: 30px;
+}
+
+.clock-ps{
+	margin-left: 30px;
+}
+
 .rate-bar{
 	float: left;
 	height: 20px;
@@ -158,4 +189,8 @@ body{
 
 .jp-color{
 	background-color: #65C7D0;
+}
+
+.fl-left{
+	float: left;
 }

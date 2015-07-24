@@ -3,7 +3,7 @@ if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.u
  // window.location.href = "http://p.udn.com.tw/upf/newmedia/2015_data/20150612_udnnbapass/udnnbapass_m/index.html";
 }
 
-var regionList = ['台灣', '合拍', '大陸', '韓國', '日本'];
+var regionList = ['台灣', '大陸', '合拍', '韓國', '日本'];
 var regionColorList = ['#35A6EC', '#8CC63E', '#D81B5E', '#F38713', '#65C7D0'];
 var channelHoursList = [];
 var count_hours = 0, count_change_image = 0;
@@ -101,6 +101,13 @@ $(document).ready(function(){
 
 	d3.csv('data/channel_hours.csv', function(data_channel_money){
 
+		data_channel_money.sort(function(a,b){
+			a = parseInt(a['avg-hours']);
+			b = parseInt(b['avg-hours']);
+
+			return a < b ? 1 : (a > b ? -1 : 0);
+		});
+
 		for (var i = 0; i < data_channel_money.length; i++){
 			var clock_block = d3.select('#clocks-container').append('div').attr('class', 'clock-block');
 			clock_block.append('div').attr('class', 'clock-channel').html(data_channel_money[i]['channel']);
@@ -109,6 +116,11 @@ $(document).ready(function(){
 			channelHoursList.push(parseInt(data_channel_money[i]['avg-hours']));
 			clockChangeList.push([i, parseInt(data_channel_money[i]['avg-hours'])]);
 		}
+
+		var avg_block = d3.select('#clocks-container').append('div').attr('class', 'clock-avg-block');
+		avg_block.append('div').attr('class', 'avg-hour-text fl-left').html('平均');
+		avg_block.append('div').attr('class', 'avg-clock-image fl-left').append('img').attr('src', 'img/clock_0.png');
+		avg_block.append('div').attr('class', 'avg-hour-num fl-left').html('12');
 
 		clockChangeList.sort(function(a,b){
 			a = a[1];
