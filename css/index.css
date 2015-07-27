@@ -7,13 +7,15 @@ body{
 }
 
 #first-page-container{
-	width: 75%;
+	width: 77%;
 	display: table;
 	margin: -40px auto 0px;
 }
 
 .sec-title{
 	display: table;
+	width: 77%;
+	margin: auto;
 }
 
 .sec-title-text{
@@ -23,9 +25,12 @@ body{
 
 .sec-content{
 	font-size: 21px;
-	/*line-height: 35px;*/
-	margin-top: 20px;
+	line-height: 35px;
+	/*margin-top: 20px;*/
 	text-align: justify;
+	width: 75%;
+	margin: 20px auto;
+
 }
 
 .ps{
