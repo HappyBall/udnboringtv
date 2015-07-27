@@ -45,15 +45,44 @@ body{
 }
 
 .svg-container{
-	margin-top: 50px;
+	/*margin-top: 50px;*/
+	position: relative;
+}
+
+.vertical-line-block{
+	position: absolute;
+	pointer-events: none;
+	z-index: 10;
+}
+
+.vertical-line{
+	border-left: 1px solid #a0a0a0;
+	/*height: 150px;*/
+}
+
+.vertical-label{
+	font-family: Arial;
+	font-size: 15px;
+	position: absolute;
+	width: 182px;
 }
 
 .big-title{
 	font-size: 40px;
 }
 
+.units{
+	float: right;
+}
+
 .sec1-block{
 	display: table;
+}
+
+.charts-title{
+	font-size: 25px;
+	display: table;
+	margin: 50px auto 0px;
 }
 
 #sec1-block2{
@@ -64,6 +93,7 @@ body{
 	margin-left: 45px;
 	margin-top: 30px;
 	display: table;
+	width: 92%;
 }
 
 .sec1-legend{
@@ -171,7 +201,7 @@ body{
 }
 
 #clocks-container{
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .clock-ps{

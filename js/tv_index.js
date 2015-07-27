@@ -18,7 +18,7 @@ $(document).ready(function(){
 	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
 		// console.log(data_drama_money);
 
-		var w = 1100, h = 600, padding = 30, barMargin = 2;
+		var w = 1100, h = 400, padding = 30, barMargin = 2;
 
 		var Ymax = d3.max(data_drama_money, function(d){return parseInt(d['money'])}),
 			Ymin = d3.min(data_drama_money, function(d){return parseInt(d['money'])});
@@ -55,12 +55,16 @@ $(document).ready(function(){
 				tip.hide(d);
 				$(this).attr('fill', regionColorList[regionList.indexOf(d['region'])]);
 			});
+
+		var intro_line_block = d3.select('#svg-drama-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '90px'});
+		intro_line_block.append("div").attr("class", "vertical-line").style('height', '150px');
+		intro_line_block.append("div").attr("class", "vertical-label").text("每一長條代表一部戲劇節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
 	d3.csv('data/comedy_money_mod.csv', function(data_comedy_money){
 		// console.log(data_comedy_money);
 
-		var w = 1100, h = 600, padding = 30, barMargin = 2;
+		var w = 1100, h = 400, padding = 30, barMargin = 2;
 
 		var Ymax = d3.max(data_comedy_money, function(d){return parseInt(d['money'])}),
 			Ymin = d3.min(data_comedy_money, function(d){return parseInt(d['money'])});
@@ -97,6 +101,10 @@ $(document).ready(function(){
 				tip.hide(d);
 				$(this).attr('fill', regionColorList[regionList.indexOf(d['region'])]);
 			});
+
+		var intro_line_block = d3.select('#svg-comedy-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '220px'});
+		intro_line_block.append("div").attr("class", "vertical-line").style('height', '100px');
+		intro_line_block.append("div").attr("class", "vertical-label").text("每一長條代表一部綜藝節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
 	d3.csv('data/channel_hours.csv', function(data_channel_money){
@@ -201,16 +209,16 @@ $(document).ready(function(){
 		}
 
 		channelListSortByDramasNum.sort(function(a,b){
-			c = a[1];
-			d = b[1];
+			c = a[2];
+			d = b[2];
 
 			if(c < d) return 1;
 
 			else if(c > d) return -1;
 
 			else{
-				e = a[2];
-				f = b[2];
+				e = a[1];
+				f = b[1];
 
 				if(e < f) return 1;
 
