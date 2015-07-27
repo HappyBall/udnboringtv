@@ -23,7 +23,7 @@ body{
 
 .sec-content{
 	font-size: 21px;
-	line-height: 35px;
+	/*line-height: 35px;*/
 	margin-top: 20px;
 	text-align: justify;
 }
@@ -31,7 +31,12 @@ body{
 .ps{
 	margin-left: 45px;
 	margin-top: 20px;
-	font-size: 18px;
+	/*font-size: 18px;*/
+}
+
+.foreword{
+	font-size: 21px;
+	margin-top: 30px;
 }
 
 .svg-container{
@@ -187,6 +192,10 @@ body{
 	width: 6.7%;
 	border: 1px solid white;
 	margin-top: 5px;
+}
+
+#sec3-ps{
+	margin-left: 15px;
 }
 
 #foreign-drama-legend{
