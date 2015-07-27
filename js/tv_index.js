@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 		var intro_line_block = d3.select('#svg-drama-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '90px'});
 		intro_line_block.append("div").attr("class", "vertical-line").style('height', '150px');
-		intro_line_block.append("div").attr("class", "vertical-label").text("每一長條代表一部戲劇節目").style({'left': '-10px', 'top': '-25px'});
+		intro_line_block.append("div").attr("class", "vertical-label myfont").text("每一長條代表一部戲劇節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
 	d3.csv('data/comedy_money_mod.csv', function(data_comedy_money){
@@ -104,7 +104,7 @@ $(document).ready(function(){
 
 		var intro_line_block = d3.select('#svg-comedy-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '220px'});
 		intro_line_block.append("div").attr("class", "vertical-line").style('height', '100px');
-		intro_line_block.append("div").attr("class", "vertical-label").text("每一長條代表一部綜藝節目").style({'left': '-10px', 'top': '-25px'});
+		intro_line_block.append("div").attr("class", "vertical-label myfont").text("每一長條代表一部綜藝節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
 	d3.csv('data/channel_hours.csv', function(data_channel_money){
