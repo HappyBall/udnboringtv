@@ -107,28 +107,28 @@ $(document).ready(function(){
 		intro_line_block.append("div").attr("class", "vertical-label myfont").text("每一長條代表一部綜藝節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
-	d3.csv('data/channel_hours.csv', function(data_channel_money){
+	d3.csv('data/channel_hours.csv', function(data_channel_hours){
 
-		data_channel_money.sort(function(a,b){
+		data_channel_hours.sort(function(a,b){
 			a = parseInt(a['avg-hours']);
 			b = parseInt(b['avg-hours']);
 
 			return a < b ? 1 : (a > b ? -1 : 0);
 		});
 
-		for (var i = 0; i < data_channel_money.length; i++){
+		for (var i = 0; i < data_channel_hours.length; i++){
 			var clock_block = d3.select('#clocks-container').append('div').attr('class', 'clock-block');
-			clock_block.append('div').attr('class', 'clock-channel myfont').html(data_channel_money[i]['channel']);
+			clock_block.append('div').attr('class', 'clock-channel myfont').html(data_channel_hours[i]['channel']);
 			clock_block.append('div').attr({'class': 'clock-image', 'id': 'clock-image-' + i}).append('img').attr('src', 'img/clock.gif');
-			clock_block.append('div').attr('class', 'clock-hours').html(data_channel_money[i]['avg-hours']);
-			channelHoursList.push(parseInt(data_channel_money[i]['avg-hours']));
-			clockChangeList.push([i, parseInt(data_channel_money[i]['avg-hours'])]);
+			clock_block.append('div').attr('class', 'clock-hours').html(data_channel_hours[i]['avg-hours']);
+			channelHoursList.push(parseInt(data_channel_hours[i]['avg-hours']));
+			clockChangeList.push([i, parseInt(data_channel_hours[i]['avg-hours'])]);
 		}
 
 		var avg_block = d3.select('#clocks-container').append('div').attr('class', 'clock-avg-block');
 		avg_block.append('div').attr('class', 'avg-hour-text fl-left').html('平均');
 		avg_block.append('div').attr('class', 'avg-clock-image fl-left').append('img').attr('src', 'img/clock_0.png');
-		avg_block.append('div').attr('class', 'avg-hour-num fl-left').html('12');
+		avg_block.append('div').attr('class', 'avg-hour-num fl-left myfont').html('12');
 
 		clockChangeList.sort(function(a,b){
 			a = a[1];
@@ -155,7 +155,7 @@ $(document).ready(function(){
 		    return function () {
 		        /*your code here*/ 
 		        if(isElementInViewport(el)){
-		        	for (var i = 0; i < data_channel_money.length; i++){		        		
+		        	for (var i = 0; i < data_channel_hours.length; i++){		        		
           				setTimeout(changeClockImage, calTimeout());
 		        	}
 
@@ -236,6 +236,9 @@ $(document).ready(function(){
 		});
 
 		// console.log(channelListSortByDramasNum);
+		var change_item = channelListSortByDramasNum[25];
+		channelListSortByDramasNum[25] = channelListSortByDramasNum[26];
+		channelListSortByDramasNum[26] = change_item;
 
 		for (var i in channelListSortByDramasNum){
 			var rate_block = d3.select('#dramas-rate-container').append('div').attr('class', 'dramas-rate-block');

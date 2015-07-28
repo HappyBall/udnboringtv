@@ -42,6 +42,9 @@ body{
 .foreword{
 	font-size: 21px;
 	margin-top: 30px;
+	color: #727171;
+	padding-left: 20px;
+	border-left: 3px solid #727171;
 }
 
 .svg-container{
@@ -357,6 +360,6 @@ footer{
 }
 
 .editor-src-bot{
-	width: 60%;
-	margin: auto;
+	width: 77%;
+	margin: 50px auto;
 }
