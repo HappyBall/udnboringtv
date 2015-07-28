@@ -28,7 +28,7 @@ body{
 	line-height: 30px;
 	/*margin-top: 20px;*/
 	text-align: justify;
-	width: 75%;
+	width: 77%;
 	margin: 20px auto;
 
 }
@@ -305,4 +305,58 @@ body{
 
 .fl-left{
 	float: left;
+}
+
+.editor-src{
+	width: 77%;
+	margin: auto;
+}
+
+.famous-people-block{
+	width: 77%;
+	display: table;
+	margin: auto;
+}
+
+.famous-people{
+	width: 100%;
+	display: table;
+	/*padding-top: 20px;*/
+	padding-bottom: 20px;
+	margin-top: 20px;
+	border-bottom: 1px solid black; 
+}
+
+.famous-content{
+	width: 75%;
+	margin-left: 40px;
+	margin-top: 15px;
+}
+
+.famous-name{
+	font-size: 21px;
+	line-height: 30px;
+	color: #036EB8;
+}
+
+.famous-text{
+	font-size: 18px;
+	line-height: 30px;
+}
+
+#famous-people-3{
+	border-bottom: none;
+}
+
+footer{
+	width: 100%;
+	background-color: #DCDDDD;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 50px;
+}
+
+.editor-src-bot{
+	width: 60%;
+	margin: auto;
 }
