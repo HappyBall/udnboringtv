@@ -170,10 +170,10 @@ $(document).ready(function(){
 		function onVisibilityChange () {
 		    return function () {
 		        /*your code here*/ 
-		        if(clockInViewd == 1 && animateInViewd == 1){
+		        /*if(clockInViewd == 1 && animateInViewd == 1){
 		        	$(window).off('resize scroll');
 		        	return;
-		        }
+		        }*/
 
 		        if(isElementInViewport($('#clocks-container')) && clockInViewd == 0) {
 		        	for (var i = 0; i < data_channel_hours.length; i++){		        		
@@ -192,10 +192,14 @@ $(document).ready(function(){
 
 		        }
 
-		        if(isElementInViewport($('#boringtv-video')) && animateInViewd == 0){
+		        if(isElementInViewport($('#boringtv-video'))){
 		        	var v = document.getElementById('boringtv-video');
 		        	v.play();
-		        	animateInViewd = 1;
+		        	// animateInViewd = 1;
+		        }
+		        else{
+		        	var v = document.getElementById('boringtv-video');
+		        	v.pause();
 		        }
 		        // console.log('visibility ' + isElementInViewport(el));
 		    }
@@ -321,5 +325,12 @@ $(document).ready(function(){
 		});
 		
 	});
+
+	document.getElementById('boringtv-video').addEventListener('ended',myHandler,false);
+
+    function myHandler(e) {
+        // What you want to do after the event
+        $(window).off('resize scroll');
+    }
 	 
 });
