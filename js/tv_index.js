@@ -359,8 +359,8 @@ $(document).ready(function(){
 	},false);
 
     $('#play-video-img').css({
-		'top': ($('video').height()/2) - ($('#play-video-img').height()/2),
-		'left': ($('video').width()/2) - ($('#play-video-img').width())
+		'top': ($('.video-wrap').height()/2) - 35,
+		'left': ($('.video-wrap').width()/2) - 35
 	});
 	 
 });
