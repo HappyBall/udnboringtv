@@ -379,3 +379,11 @@ footer{
 	width: 77%;
 	margin: 50px auto;
 }
+
+.tooltip{
+	font-family: 微軟正黑體;
+}
+
+.d3-tip{
+	font-family: 微軟正黑體;
+}
