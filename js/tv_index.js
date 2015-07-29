@@ -13,10 +13,13 @@ var channelListSortByDramasNum = [];
 var dramasMaxNum = 12;
 var clockInViewd = 0;
 var animateInViewd = 0;
+var video_play = 0;
 
 //---------------------------------------------------------------------------------------------------------------------
 
 $(document).ready(function(){
+
+	
 
 	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
 		// console.log(data_drama_money);
@@ -154,18 +157,18 @@ $(document).ready(function(){
 		    return (rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight) && rect.left <= (window.innerWidth || document.documentElement.clientWidth));
 		}
 
-		function onVisibilityChangeVideo (el) {
-		    return function () {
-		        /*your code here*/ 
-		        if(isElementInViewport(el)){
-		        	var v = document.getElementById('boringtv-video');
-		        	v.play();
-		        	$(window).off('scroll');
+		// function onVisibilityChangeVideo (el) {
+		//     return function () {
+		//         /*your code here*/ 
+		//         if(isElementInViewport(el)){
+		//         	var v = document.getElementById('boringtv-video');
+		//         	v.play();
+		//         	$(window).off('scroll');
 
-		        	console.log('in view');
-		        }
-		    }
-		}
+		//         	console.log('in view');
+		//         }
+		//     }
+		// }
 
 		function onVisibilityChange () {
 		    return function () {
@@ -195,11 +198,15 @@ $(document).ready(function(){
 		        if(isElementInViewport($('#boringtv-video'))){
 		        	var v = document.getElementById('boringtv-video');
 		        	v.play();
+		        	video_play = 1;
+		        	$('#play-video-img').css('display', 'none');
 		        	// animateInViewd = 1;
 		        }
 		        else{
 		        	var v = document.getElementById('boringtv-video');
 		        	v.pause();
+		        	video_play = 0;
+		        	$('#play-video-img').css('display', 'table');
 		        }
 		        // console.log('visibility ' + isElementInViewport(el));
 		    }
@@ -331,6 +338,29 @@ $(document).ready(function(){
     function myHandler(e) {
         // What you want to do after the event
         $(window).off('resize scroll');
+        $('#play-video-img').css('display', 'table');
+        video_play = 0;
     }
+
+    var video = document.getElementById('video-container');
+	video.addEventListener('click',function(){
+		if(video_play == 0){
+			document.getElementById('boringtv-video').play();
+			video_play = 1;
+			$('#play-video-img').css('display', 'none');
+		}
+
+		else{
+			document.getElementById('boringtv-video').pause();
+			video_play = 0;
+			$('#play-video-img').css('display', 'table');
+		}
+	  
+	},false);
+
+    $('#play-video-img').css({
+		'top': ($('video').height()/2) - ($('#play-video-img').height()/2),
+		'left': ($('video').width()/2) - ($('#play-video-img').width())
+	});
 	 
 });
