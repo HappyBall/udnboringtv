@@ -310,6 +310,10 @@ body{
 	float: left;
 }
 
+.video-wrap{
+	margin-top: 30px;
+}
+
 .editor-src{
 	width: 77%;
 	margin: auto;

@@ -126,7 +126,7 @@ $(document).ready(function(){
 		}
 
 		var avg_block = d3.select('#clocks-container').append('div').attr('class', 'clock-avg-block');
-		avg_block.append('div').attr('class', 'avg-hour-text fl-left').html('平均');
+		avg_block.append('div').attr('class', 'avg-hour-text fl-left myfont').html('平均');
 		avg_block.append('div').attr('class', 'avg-clock-image fl-left').append('img').attr('src', 'img/clock_0.png');
 		avg_block.append('div').attr('class', 'avg-hour-num fl-left myfont').html('12');
 
