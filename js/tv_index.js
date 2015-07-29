@@ -11,10 +11,13 @@ var clockChangeList = [];
 var channel_dramas_dict = {};
 var channelListSortByDramasNum = [];
 var dramasMaxNum = 12;
+var clockInViewd = 0;
+var animateInViewd = 0;
 
 //---------------------------------------------------------------------------------------------------------------------
 
 $(document).ready(function(){
+
 	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
 		// console.log(data_drama_money);
 
@@ -151,22 +154,54 @@ $(document).ready(function(){
 		    return (rect.bottom >= 0 && rect.right >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight) && rect.left <= (window.innerWidth || document.documentElement.clientWidth));
 		}
 
-		function onVisibilityChange (el) {
+		function onVisibilityChangeVideo (el) {
 		    return function () {
 		        /*your code here*/ 
 		        if(isElementInViewport(el)){
+		        	var v = document.getElementById('boringtv-video');
+		        	v.play();
+		        	$(window).off('scroll');
+
+		        	console.log('in view');
+		        }
+		    }
+		}
+
+		function onVisibilityChange () {
+		    return function () {
+		        /*your code here*/ 
+		        if(clockInViewd == 1 && animateInViewd == 1){
+		        	$(window).off('resize scroll');
+		        	return;
+		        }
+
+		        if(isElementInViewport($('#clocks-container')) && clockInViewd == 0) {
 		        	for (var i = 0; i < data_channel_hours.length; i++){		        		
           				setTimeout(changeClockImage, calTimeout());
 		        	}
 
-		        	$(window).off('resize scroll');
+		        	clockInViewd = 1;
 
+		        	/*$(window).off('resize scroll');
+
+		        	var handler = onVisibilityChangeVideo($('#boringtv-video'));
+
+		        	$(window).on('scroll', handler);
+
+		        	console.log('abafdsa');*/
+
+		        }
+
+		        if(isElementInViewport($('#boringtv-video')) && animateInViewd == 0){
+		        	var v = document.getElementById('boringtv-video');
+		        	v.play();
+		        	animateInViewd = 1;
 		        }
 		        // console.log('visibility ' + isElementInViewport(el));
 		    }
 		}
 
-		var handler = onVisibilityChange($('#clocks-container'));
+		var handler = onVisibilityChange();
 
 		$(window).on('resize scroll', handler);
 
