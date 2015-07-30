@@ -4,16 +4,16 @@
 	<link rel="shortcut icon" href="img/udn_title_icon.jpg">
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- <title>NBA五星連線 哪隊最愛傳球？</title> -->
+	<title>電視為什麼這麼難看？ 數據告訴你真相</title>
 	
 	<!-- for Facebook -->
-	<!-- <meta property="og:title" content="NBA五星連線 哪隊最愛傳球？"/> 
+	<meta property="og:title" content="電視為什麼這麼難看？ 數據告訴你真相"/> 
 	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="http://p.udn.com.tw/upf/newmedia/2015_data/20150612_udnnbapass/udnnbapass/index.html"/>
-	<meta property="og:image" content="http://p.udn.com.tw/upf/newmedia/2015_data/20150612_udnnbapass/udnnbapass/img/FB.jpg"/>
+	<meta property="og:url" content="http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data/index.html"/>
+	<meta property="og:image" content="http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data/img/FB.jpg"/>
 	<meta property="og:site_name" content="聯合報系新媒體部"/> 
-	<meta property="og:description" content="本專題分析16強季後賽隊伍在季賽的傳球表現，看看哪些隊伍注重團隊合作，哪些較倚賴主力球星，甚至是團隊互動率極低，幾乎不傳球的是哪支隊伍？"/>
- -->	
+	<meta property="og:description" content="電視轉來轉去，沒一台好看的！」這樣的抱怨每天出現在你我的生活中，為什麼電視節目這麼難看？你每個月繳的500元有線電視費花到哪去了？數據和動畫為你一一拆解。"/>
+	
 	<!-- for Google -->
 	<!-- <meta name="description" content="本專題分析16強季後賽隊伍在季賽的傳球表現，看看哪些隊伍注重團隊合作，哪些較倚賴主力球星，甚至是團隊互動率極低，幾乎不傳球的是哪支隊伍？" />
 	<meta name="author" content="聯合報系新媒體部" />
@@ -70,13 +70,21 @@
   	<script type="text/javascript" src="js/bootstrap.js"></script>
   	<script type="text/javascript" src="js/d3.js"></script>
   	<script type="text/javascript" src="js/d3tip.js"></script>
-  	<script type="text/javascript" src="js/tv_index.js"></script>
+  	<script type="text/javascript" src="js/tv_index.js?v3"></script>
   	
   	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  	<link rel="stylesheet" type="text/css" href="css/index.css">
+  	<link rel="stylesheet" type="text/css" href="css/index.css?v3">
 </head>
 
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.4&appId=427619644082528";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 	<div class = "container">
 		<div id = "first-page-container">
@@ -88,7 +96,9 @@
 				你每個月繳的500元有線電視費花到哪去了？<br>
 				數據和動畫為你一一拆解。
 			</div>
+			<div class="fb-like" data-href="http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data/index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
 		</div>
+
 		<div class = "container-fluid sections" id = "section1">
 			<div class = "sec1-block">
 				<div class = "sec-title">
@@ -96,7 +106,7 @@
 					<div class = "sec-title-text myfont fl-left">製作成本低 韓劇是台劇8倍</div>
 				</div>
 				<div class = "sec-content myfont">
-					「有錢不一定能做出好節目，但沒錢一定做不出好節目。」製作成本低是導致台灣電視節目難看的原因之一。觀察台、陸、韓、日戲劇製作費，台劇平均一集216萬元，最低從40萬元起跳，壹電視《拜金女王》、三立《敗犬女王》一集600萬元，在台劇中已屬高規格製作。<br><br>
+					「有錢不一定能做出好節目，但沒錢一定做不出好節目。」製作成本低是導致台灣電視節目難看的原因之一。觀察台、陸、韓、日戲劇製作費，台劇平均一集189萬元，最低從40萬元起跳，壹電視《拜金女王》、三立《敗犬女王》一集600萬元，在台劇中已屬高規格製作。<br><br>
 					大陸劇平均一集製作費736萬元，場面浩大的古裝劇單集成本更超過千萬元，例如紅透兩岸的《武媚娘傳奇》，一集成本就要1562萬元。以品質精緻取勝的韓劇，平均一集製作費高達1738萬元，是台劇的8倍。2007年裴勇俊演出的《太王四神記》耗費鉅資製作特效，一集成本上看5000萬元，創下韓國電視劇紀錄。
 				</div>
 				<div class = "charts-title myfont">各國戲劇節目平均一集製作費</div>
@@ -104,7 +114,7 @@
 				<div class = "sec1-legend-block">
 					<div class = "sec1-legend">
 						<div class = "sec1-legend-color tw-color"></div>
-						<div class = "sec1-legend-nations myfont">台灣&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br>216</div>
+						<div class = "sec1-legend-nations myfont">台灣&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br>189</div>
 					</div>
 					<div class = "sec1-legend">
 						<div class = "sec1-legend-color cn-color"></div>
@@ -219,13 +229,14 @@
 				台灣電視節目難看，與有線電視市場結構和產業競爭相關。目前全台有501萬有線電視訂戶，普及率將近60%，收費制度採月付500到600元「吃到飽」方式，收視戶每個月花500多元就能看100多個頻道，看似便宜，但很多頻道根本是觀眾不需要的，且充滿劣質節目。<br><br>
 				我們每個月繳了這麼多的有線電視費，為什麼還是看到這麼多爛節目？錢到底進了誰的口袋？這些複雜難懂的問題，透過動畫讓你立馬了解！
 			</div>
-			<div class = "video-wrap" id = "video-container">
+			<!-- <div class = "video-wrap" id = "video-container">
 				<video class = "animation-video" poster = "img/tvcover.jpg" id = "boringtv-video">
 
 					<source src="video/boringtv.mp4" type="video/mp4"> 
 				</video>
 				<img src="img/play.png" id = "play-video-img">
-			</div>
+			</div> -->
+			<div id = "player"></div>
 		</div>
 		<div class = "container-fluid sections" id = "section5">
 			<div class = "sec-title">
@@ -271,16 +282,40 @@
 			</div>
 		</div>
 
-		<div class = "editor-src-bot myfont">
-			聯合報新媒體部／楊棋宇、蔡佩蓉&nbsp&nbsp&nbsp聯合報／蘇士堯、記者彭慧明&nbsp&nbsp製作<br>
-			插畫／董十行<br>
-			圖／報系資料照片
+		<div class = "editor-logo-container">
+			<div class = "editor-src-bot myfont">
+				聯合報系新媒體部／楊棋宇、蔡佩蓉&nbsp&nbsp&nbsp聯合報／蘇士堯、記者彭慧明&nbsp&nbsp製作<br>
+				插畫／董十行<br>
+				圖／報系資料照片
+			</div>
+
+			<div class = "logo-container">
+				<div class = "logos fl-left">
+					<a href="https://www.facebook.com/udnNewMediaLab?fref=ts" target="_blank">
+						<img id = "newmedia-logo" src="img/nmlogo.png">
+					</a>
+				</div>
+				<div class = "logos fl-left">
+					<a href="http://theme.udn.com/theme/cate/6772" target="_blank">
+						<img id = "udn-logo" src="img/udnlogo.png">
+					</a>
+				</div>
+			</div>
+
 		</div>
+		<div class = "like-btn">
+			<div class="fb-like" data-href="http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data/index.html" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+		</div>
+		<div class = "comments">
+			<div class="fb-comments" data-width="100%" data-href="http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data/index.html" data-numposts="5"></div>
+		</div>
+
+
 		
 	</div>
-	<!-- <footer> -->
-		
-	<!-- </footer> -->
+	
+
 </body>
 </html>
 

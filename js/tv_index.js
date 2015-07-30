@@ -1,6 +1,6 @@
 if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  // some code..
- // window.location.href = "http://p.udn.com.tw/upf/newmedia/2015_data/20150612_udnnbapass/udnnbapass_m/index.html";
+ window.location.href = "http://p.udn.com.tw/upf/newmedia/2015_data/20150729_tv_data/udn_tv_data_m/index.html";
 }
 
 var regionList = ['台灣', '大陸', '合拍', '韓國', '日本'];
@@ -14,12 +14,39 @@ var dramasMaxNum = 12;
 var clockInViewd = 0;
 var animateInViewd = 0;
 var video_play = 0;
+var video_end = 0;
 
 //---------------------------------------------------------------------------------------------------------------------
 
+	var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	
+	  var player;
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '680',
+          width: '100%',
+          videoId: '5xx11G4HRZs',
+          events: {
+            // 'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerStateChange(event){
+      	/*if(event.data == YT.PlayerState.ENDED && clockInViewd == 1)
+      		$(window).off('resize scroll');
+      	else if (event.data == YT.PlayerState.ENDED)
+      		video_end = 1;*/
+      }
+
 $(document).ready(function(){
 
-	
 
 	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
 		// console.log(data_drama_money);
@@ -34,7 +61,7 @@ $(document).ready(function(){
 						.range([padding, w - padding]);
 
 		var yScale = d3.scale.linear()
-						.domain([Ymin, Ymax])
+						.domain([0, Ymax])
 						.range([padding, h-padding]);
 
 		var barWidth = (w - padding*2) / data_drama_money.length - barMargin;
@@ -80,7 +107,7 @@ $(document).ready(function(){
 						.range([padding, w - padding]);
 
 		var yScale = d3.scale.linear()
-						.domain([Ymin, Ymax])
+						.domain([0, Ymax])
 						.range([padding, h-padding]);
 
 		var barWidth = (w - padding*2) / data_comedy_money.length - barMargin;
@@ -108,8 +135,8 @@ $(document).ready(function(){
 				$(this).attr('fill', regionColorList[regionList.indexOf(d['region'])]);
 			});
 
-		var intro_line_block = d3.select('#svg-comedy-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '220px'});
-		intro_line_block.append("div").attr("class", "vertical-line").style('height', '100px');
+		var intro_line_block = d3.select('#svg-comedy-money').append('div').attr('class', 'vertical-line-block').style({'left': '4.2%', 'bottom': '70px'});
+		intro_line_block.append("div").attr("class", "vertical-line").style('height', '150px');
 		intro_line_block.append("div").attr("class", "vertical-label myfont").text("每一長條代表一部綜藝節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
@@ -185,9 +212,10 @@ $(document).ready(function(){
 
 		        	clockInViewd = 1;
 
-		        	/*$(window).off('resize scroll');
+		        	/*if(video_end == 1)
+		        		$(window).off('resize scroll');*/
 
-		        	var handler = onVisibilityChangeVideo($('#boringtv-video'));
+		        	/*var handler = onVisibilityChangeVideo($('#boringtv-video'));
 
 		        	$(window).on('scroll', handler);
 
@@ -195,18 +223,27 @@ $(document).ready(function(){
 
 		        }
 
-		        if(isElementInViewport($('#boringtv-video'))){
-		        	var v = document.getElementById('boringtv-video');
-		        	v.play();
-		        	video_play = 1;
-		        	$('#play-video-img').css('display', 'none');
+		        if(isElementInViewport($('#player'))){
+		        	// var v = document.getElementById('boringtv-video');
+		        	// v.play();
+		        	
+		        	// $('#play-video-img').css('display', 'none');
 		        	// animateInViewd = 1;
+		        	if(video_play != 1){
+		        		player.playVideo();
+		        		video_play = 1;
+		        	}
 		        }
 		        else{
-		        	var v = document.getElementById('boringtv-video');
+		        	/*var v = document.getElementById('boringtv-video');
 		        	v.pause();
 		        	video_play = 0;
-		        	$('#play-video-img').css('display', 'table');
+		        	$('#play-video-img').css('display', 'table');*/
+		        	if(video_play != 0){
+		        		player.pauseVideo();
+		        		video_play = 0;
+		        	}
+		        	
 		        }
 		        // console.log('visibility ' + isElementInViewport(el));
 		    }
@@ -333,7 +370,7 @@ $(document).ready(function(){
 		
 	});
 
-	document.getElementById('boringtv-video').addEventListener('ended',myHandler,false);
+	/*document.getElementById('boringtv-video').addEventListener('ended',myHandler,false);
 
     function myHandler(e) {
         // What you want to do after the event
@@ -361,6 +398,6 @@ $(document).ready(function(){
     $('#play-video-img').css({
 		'top': 338 - 35,
 		'left': 545 - 35
-	});
+	});*/
 	 
 });
