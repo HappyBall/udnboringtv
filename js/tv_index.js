@@ -31,6 +31,7 @@ var video_end = 0;
           height: '680',
           width: '100%',
           videoId: '5xx11G4HRZs',
+          playerVars: {rel: 0},
           events: {
             // 'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -39,16 +40,19 @@ var video_end = 0;
       }
 
       function onPlayerStateChange(event){
-      	/*if(event.data == YT.PlayerState.ENDED && clockInViewd == 1)
-      		$(window).off('resize scroll');
-      	else if (event.data == YT.PlayerState.ENDED)
-      		video_end = 1;*/
+      	if(event.data == YT.PlayerState.ENDED)
+      		ga("send", {
+		        "hitType": "event",
+		        "eventCategory": "video",
+		        "eventAction": "video-played",
+		        "eventLabel": "video-ended"
+		    });
       }
 
 $(document).ready(function(){
 
 
-	d3.csv('data/dramas_money_mod.csv', function(data_drama_money){
+	d3.csv('data/dramas_money_mod.csv?v1', function(data_drama_money){
 		// console.log(data_drama_money);
 
 		var w = 1100, h = 400, padding = 30, barMargin = 2;
@@ -83,6 +87,12 @@ $(document).ready(function(){
 			.on('mouseover', function(d){
 				tip.show(d);
 				$(this).attr('fill', '#DAE0E9');
+				ga("send", {
+			        "hitType": "event",
+			        "eventCategory": "bar_drama",
+			        "eventAction": "mouseover",
+			        "eventLabel": d['program'] + ',' + d['money']
+			    });
 			})
 			.on('mouseout', function(d){
 				tip.hide(d);
@@ -94,7 +104,7 @@ $(document).ready(function(){
 		intro_line_block.append("div").attr("class", "vertical-label myfont").text("每一長條代表一部戲劇節目").style({'left': '-10px', 'top': '-25px'});
 	});
 
-	d3.csv('data/comedy_money_mod.csv', function(data_comedy_money){
+	d3.csv('data/comedy_money_mod.csv?v1', function(data_comedy_money){
 		// console.log(data_comedy_money);
 
 		var w = 1100, h = 400, padding = 30, barMargin = 2;
@@ -129,6 +139,12 @@ $(document).ready(function(){
 			.on('mouseover', function(d){
 				tip.show(d);
 				$(this).attr('fill', '#DAE0E9');
+				ga("send", {
+			        "hitType": "event",
+			        "eventCategory": "bar_comedy",
+			        "eventAction": "mouseover",
+			        "eventLabel": d['program'] + ',' + d['money']
+			    });
 			})
 			.on('mouseout', function(d){
 				tip.hide(d);
@@ -358,6 +374,13 @@ $(document).ready(function(){
 		$('.rate-bar')
 		.on('mouseover', function(){
 			$(this).css('background-color', '#F6AFA9');
+			ga("send", {
+			    "hitType": "event",
+			    "eventCategory": "bar_channel_drama",
+			    "eventAction": "mouseover",
+			    "eventLabel": $(this).attr('data-original-title')
+			});
+			// console.log($(this).attr('data-original-title'));
 		})
 		.on('mouseout',function(){
 			var r = $(this).attr('region');
